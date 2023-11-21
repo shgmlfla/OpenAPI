@@ -1,9 +1,16 @@
-package com.example.openapi;
+package com.example.openapi.Service;
 
+import com.example.openapi.Entity.BestUlsan;
+import com.example.openapi.Entity.TourInfoBody;
+import com.example.openapi.Entity.TourInfoHeader;
+import com.example.openapi.Repository.UlsanRepository;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.example.openapi.Entity.Ulsan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UlsanService {
@@ -11,6 +18,21 @@ public class UlsanService {
     @Autowired
     private UlsanRepository ulsanRepository;
 
+    // Best 조회
+    public List<BestUlsan> getBestUlsanTour(){
+        List<BestUlsan> BestUlsanTourBest = ulsanRepository.getBestUlsan();
+        return BestUlsanTourBest;
+    }
+
+    public List<TourInfoHeader> getTourInfoHeader(Long Id){
+        List<TourInfoHeader> tourInfoHeaders = ulsanRepository.findTourInfoHeader(Id);
+        return tourInfoHeaders;
+    }
+
+    public List<TourInfoBody> getTourInfoBody(Long Id){
+        List<TourInfoBody> tourInfoBodies = ulsanRepository.findTourInfoBody(Id);
+        return tourInfoBodies;
+    }
     public void saveUlsanData(String jsonData) {
         try {
             ObjectMapper objectMapper = new ObjectMapper();

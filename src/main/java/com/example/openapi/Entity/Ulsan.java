@@ -1,4 +1,4 @@
-package com.example.openapi;
+package com.example.openapi.Entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
@@ -111,4 +111,5 @@ public class Ulsan {
 
     @JsonProperty("휴무")
     private String dayOff;
+
 }
